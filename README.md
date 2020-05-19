@@ -8,7 +8,7 @@ Interaction with the program is done trough a set of commands and must be given 
 3º Open terminal inside same folder as compiled project and type: ./football < "input_file_name".in > output.out <br />
 
 # Compiling:
-Open terminal inside same folder project and type: gcc -g -fsanitize=address -ansi -Wall -Wextra -pedantic -Werror -o football *.c <br />
+Open terminal inside same folder as project and type: gcc -g -fsanitize=address -ansi -Wall -Wextra -pedantic -Werror -o football *.c <br />
 
 # Performing tests:
 1º Unzip tests.zip <br />
