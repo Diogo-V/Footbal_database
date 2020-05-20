@@ -6,7 +6,7 @@
  * Description
  * > Library which contains the functions used in "main.c". This functions are
  *   triggered when the user inputs a valid command in stdin. Each one of them
- *   represent a different command.
+ *   represents a different command.
  *
  * -------------------------------------------------------------------------- */
 
@@ -36,6 +36,10 @@ int team_exists(hash_teams teams_tbl, char* team_name);
 
 /* Verifies if game is already in system */
 int game_exists(hash_games games_tbl, char* game_name);
+
+
+/* Qsort comparison function for strings */
+int string_cmp(const void *input_word1, const void *input_word2);
 
 
 /* Creates a new match */

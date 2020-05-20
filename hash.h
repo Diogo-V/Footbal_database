@@ -3,16 +3,18 @@
  *
  * Author: Diogo Venancio, n95555
  *
- * Description
+ * Description:
+ * > Library that contains hash related functions such as initializing the
+ *   table, deleting it, inserting elements inside it, etc.
+ *
  * > This library is a modified version of "LP_Hash.h" and "Item.h" where,
  *   "Item.h" was changed to 2 structs and "LP_Hash.h"'s functions were
  *   divided into two subsets (teams and games).
  *
- * > Library that contains hash related functions such as initializing the
- *   table, deleting it, inserting elements inside it, etc.
- *
  * > Each hash table is represented by a pointer to links of teams/games,
  *   it's max number of elements and it's current number of elements
+ *
+ * > Collision inside hash table is resolved using linear probing
  *
  * -------------------------------------------------------------------------- */
 
@@ -71,7 +73,7 @@ typedef struct my_hash_games {
 /* -------------------------------------------------------------------------- */
 
 
-/* Djb2 hash function. Receives a string and returns hash value */
+/* Receives a string and returns it's hash code */
 int get_hash_value(char* word, int table_size);
 
 

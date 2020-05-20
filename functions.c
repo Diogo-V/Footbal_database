@@ -31,7 +31,7 @@ int game_exists(hash_games games_tbl, char* game_name) {
 }
 
 
-/* Qsort comparison function */
+/* Qsort comparison function for strings */
 int string_cmp(const void *input_word1, const void *input_word2) {
 
     /* Casts inputs to requested type */
@@ -350,7 +350,7 @@ void deletes_game(int lct, hash_teams teams_tbl,
         }
 
         /* Deletes game's node inside doubly linked list */
-        remove_element(games_lst, games_tbl->table[game_index]);
+        remove_node(games_lst, games_tbl->table[game_index]);
 
         /* Deletes game inside table */
         deletes_game_hash(games_tbl, game_index);
@@ -409,66 +409,46 @@ void changes_game_score(int lct, hash_teams teams_tbl, hash_games games_tbl) {
         /* Previously, team1 was the winner */
         if (game->score1 > game->score2) {
 
-            /* Now, team1 is still the winner */
+            /* Now, team1 is still the winner and doesn't need to update it's
+             * victories */
             if (new_sc1 > new_sc2) {
 
-                /* Updates game's scores */
-                game->score1 = new_sc1;
-                game->score2 = new_sc2;
+                ;
 
-            /* Now, team2 is the winner */
+            /* Now, team2 is the winner so, team2 gets one victory and team1
+             * losses one victory */
             } else if (new_sc1 < new_sc2) {
 
-                /* Team2 gets one victory and team1 losses one victory */
                 teams_tbl->table[t1_idx]->value->victories--;
                 teams_tbl->table[t2_idx]->value->victories++;
 
-                /* Updates game's scores */
-                game->score1 = new_sc1;
-                game->score2 = new_sc2;
-
-            /* Now, match is a draw */
+            /* Now, match is a draw and team1 losses one victory */
             } else {
 
-                /* Team1 losses one victory */
                 teams_tbl->table[t1_idx]->value->victories--;
-
-                /* Updates game's scores */
-                game->score1 = new_sc1;
-                game->score2 = new_sc2;
 
             }
 
         /* Previously, team2 was the winner */
         } else if (game->score1 < game->score2) {
 
-            /* Now, team1 is the winner */
+            /* Now, team1 is the winner so, team1 gets one victory and team2
+             * losses one victory */
             if (new_sc1 > new_sc2) {
 
-                /* Team1 gets one victory and team2 losses one victory */
                 teams_tbl->table[t1_idx]->value->victories++;
                 teams_tbl->table[t2_idx]->value->victories--;
 
-                /* Updates game's scores */
-                game->score1 = new_sc1;
-                game->score2 = new_sc2;
-
-            /* Now, team2 is still the winner */
+            /* Now, team2 is still the winner and doesn't need to update it's
+             * victories */
             } else if (new_sc1 < new_sc2) {
 
-                /* Updates game's scores */
-                game->score1 = new_sc1;
-                game->score2 = new_sc2;
+                ;
 
-                /* Now, match is a draw */
+            /* Now, match is a draw so, team2 losses one victory */
             } else {
 
-                /* Team2 losses one victory */
                 teams_tbl->table[t2_idx]->value->victories--;
-
-                /* Updates game's scores */
-                game->score1 = new_sc1;
-                game->score2 = new_sc2;
 
             }
 
@@ -478,33 +458,26 @@ void changes_game_score(int lct, hash_teams teams_tbl, hash_games games_tbl) {
             /* Now, team1 is the winner */
             if (new_sc1 > new_sc2) {
 
-                /* Team1 gets one victory */
                 teams_tbl->table[t1_idx]->value->victories++;
-
-                /* Updates game's scores */
-                game->score1 = new_sc1;
-                game->score2 = new_sc2;
 
             /* Now, team2 is the winner */
             } else if (new_sc1 < new_sc2) {
 
-                /* Team2 gets one victory */
                 teams_tbl->table[t2_idx]->value->victories++;
 
-                /* Updates game's scores */
-                game->score1 = new_sc1;
-                game->score2 = new_sc2;
-
-            /* Now, match is still a draw */
+            /* Now, match is still a draw and there is no need to update
+             * team's victories */
             } else {
 
-                /* Updates game's scores */
-                game->score1 = new_sc1;
-                game->score2 = new_sc2;
+                ;
 
             }
 
         }
+
+        /* Updates game's scores */
+        game->score1 = new_sc1;
+        game->score2 = new_sc2;
 
     }
 

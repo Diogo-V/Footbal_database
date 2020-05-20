@@ -138,7 +138,7 @@ void remove_end(dl_list lst);
 
 
 /* Removes node from list */
-void remove_element(dl_list lst, dl_link del_node);
+void remove_node(dl_list lst, dl_link del_node);
 
 
 /* Destroys list, clearing all memory */

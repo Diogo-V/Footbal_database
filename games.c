@@ -208,7 +208,7 @@ void remove_end(dl_list lst) {
 
 
 /* Removes node from list */
-void remove_element(dl_list lst, dl_link del_node) {
+void remove_node(dl_list lst, dl_link del_node) {
 
     /* If list is not valid, interrupts */
     if ( ! dl_list_is_valid(lst) || dl_list_is_empty(lst)) return ;

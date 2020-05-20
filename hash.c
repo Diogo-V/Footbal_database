@@ -15,7 +15,7 @@
 #include "hash.h"
 
 
-/* djb2 hash function */
+/* Receives a string and returns it's hash code */
 int get_hash_value(char* word, int table_size) {
 
     /* Holds hash initial value and arbitrary prime number */
