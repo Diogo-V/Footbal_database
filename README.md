@@ -1,5 +1,5 @@
 # Description:
-Program that simulates a management system of a database for football games. <br />
+Program that simulates a database management system for football games. <br />
 Interaction with the program is done trough a set of commands and must be given in a specific format. <br />
 
 # How to use:
